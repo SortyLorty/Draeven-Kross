@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#121b33">
 <meta name="description" content="Scheda interattiva di Draeven Kross, Paladino della Conquista di 6° livello">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="icon" href="icons/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -296,9 +296,50 @@ select:disabled{opacity:.6}
 .atab .ar .hit{font-family:var(--display);font-weight:800;color:var(--blue);font-size:17px;grid-row:1 / span 2;grid-column:2;align-self:center;text-align:right;min-width:34px}
 .atab .ar .dmg{font-size:14px;font-weight:600;grid-column:1}
 .atab .ar small{font-size:12.5px;color:var(--soft);font-weight:400}
-.cgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
-@media (min-width:621px){.cgrid{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);grid-template-areas:"mio turno" "mio pf" "mio ris" "rea rip";grid-template-rows:auto auto 1fr auto;align-items:start}
-.a-turno{grid-area:turno}.a-mio{grid-area:mio;align-self:stretch}.a-pf{grid-area:pf}.a-ris{grid-area:ris}.a-rea{grid-area:rea}.a-rip{grid-area:rip}}
+.cgrid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:12px;align-items:start}
+.cL,.cR{display:flex;flex-direction:column;gap:12px;min-width:0}
+.cL>.card,.cR>.card{width:100%}
+@media (max-width:900px){.cgrid{display:flex;flex-direction:column}.cL,.cR{display:contents}.a-turno{order:1}.a-mio{order:2}.a-pf{order:3}.a-ris{order:4}.a-rea{order:5}.a-rip{order:6}}
+.card h3 .btn{font-family:var(--body);letter-spacing:0;text-transform:none}
+.turnbox>*+*{margin-top:10px}
+.trow{display:grid;grid-template-columns:84px minmax(0,1fr);gap:8px;align-items:center}
+.pl{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+.rc{display:flex;flex-wrap:wrap;gap:6px;align-items:center;min-width:0}
+.rc select{flex:1 1 220px;min-height:42px;border-radius:999px;padding:6px 36px 6px 14px;font-weight:700;font-size:15px;background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23778' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 14px center;-webkit-appearance:none;appearance:none;color:var(--ink);border:1px solid var(--line)}
+.rc select.on{background-color:var(--night);color:var(--night-ink);border-color:var(--night)}
+.pk{position:relative;cursor:pointer}
+.pk input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.pk span{display:inline-flex;align-items:center;min-height:34px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:13.5px;font-weight:700;color:var(--ink);user-select:none;-webkit-user-select:none}
+.pk span::before{content:"";width:8px;height:8px;border-radius:50%;border:1.5px solid var(--soft);margin-right:7px;flex:none}
+.pk input:checked+span{background:var(--blue);border-color:var(--blue);color:#fff}
+.pk input:checked+span::before{background:currentColor;border-color:currentColor}
+.pk input:disabled+span{opacity:.35}
+.pk input:focus-visible+span{outline:3px solid var(--blue);outline-offset:2px}
+.atkb{border:1px solid var(--line);border-radius:12px;background:var(--card2);padding:8px 10px}
+.atkb .trow{align-items:start}
+.atkb .pl{padding-top:12px}
+.atkb .rc select{flex-basis:100%}
+.ro{margin-left:92px}
+.ro:empty{display:none}
+.atkb .ro{margin-top:6px}
+.ri{padding:7px 10px;border-radius:8px;background:var(--card2);font-size:14px;border-left:3px solid var(--night);display:flex;flex-direction:column;gap:3px}
+.atkb .ri{background:var(--card)}
+.ri .ln{display:flex;flex-wrap:wrap;gap:2px 16px}
+.ri .d{font-weight:800;font-variant-numeric:tabular-nums}
+.ri .k{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-right:4px}
+.ri small{color:var(--soft);font-size:13px}
+.ri .row{margin-top:2px}
+.ri.w,#twarn .ri{background:var(--red-soft);border-left-color:var(--red);color:var(--red);font-weight:700}
+#twarn>*+*{margin-top:6px}
+.atkb .rc{gap:5px}.atkb .pk span{padding:3px 8px;font-size:13px;min-height:32px}.atkb .pk span::before{display:none}
+.ri .btn.sm{min-height:34px;padding:4px 10px;font-size:13.5px}
+@media (max-width:620px){.trow{grid-template-columns:1fr;gap:4px}.ro,.atkb .ro{margin-left:0}.atkb .pl{padding-top:0}}
+details.privs>summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.privs>summary::-webkit-details-marker{display:none}
+details.privs>summary h3{margin:0}
+details.privs>summary .muted::after{content:" ▾"}
+details.privs[open]>summary .muted::after{content:" ▴"}
+details.privs .card{background:var(--card2)}
 .res.r2.r1{grid-template-columns:max-content minmax(0,1fr)!important}
 .toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:12px;font-weight:700;opacity:0;pointer-events:none;transition:.25s;z-index:40;max-width:calc(100% - 32px)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
@@ -322,7 +363,6 @@ select:disabled{opacity:.6}
     <button class="tab" role="tab" id="t-sheet" aria-controls="sheet" aria-selected="false">Scheda</button>
     <button class="tab" role="tab" id="t-combat" aria-controls="combat" aria-selected="true">Combattimento</button>
     <button class="tab" role="tab" id="t-spell" aria-controls="spell" aria-selected="false">Incantesimi</button>
-    <button class="tab" role="tab" id="t-skill" aria-controls="skill" aria-selected="false">Privilegi</button>
     <button class="tab" role="tab" id="t-bag" aria-controls="bag" aria-selected="false">Zaino</button>
     <button class="tab" role="tab" id="t-lore" aria-controls="lore" aria-selected="false">Storia</button>
   </nav>
@@ -389,132 +429,9 @@ select:disabled{opacity:.6}
     </div>
     </div>
   </div>
-</section>
-
-<!-- COMBATTIMENTO -->
-<section role="tabpanel" id="combat" aria-labelledby="t-combat">
-  <div class="cgrid">
-    <div class="card a-turno">
-      <h3>Turno ed effetti <span class="chip a" id="reactChip">Reazione pronta</span></h3>
-      <div class="rnd"><span class="lbl">Turno</span><span class="v num" id="rndV">—</span></div>
-      <div class="row" style="margin-bottom:10px">
-        <button class="btn p" id="bRound" type="button">Inizio del tuo turno</button>
-        <button class="btn sm" id="bEnd" type="button">Fine scontro</button>
-      </div>
-      <div class="effs" id="effs"></div>
-      <p class="muted small" id="effEmpty" style="margin:6px 0 0">Nessun effetto attivo. Incantesimi, Presenza Conquistatrice e Colpo tonante compaiono qui con i turni che restano.</p>
-    </div>
-    <div class="card a-mio">
-      <h3>Il tuo turno <span class="steps" id="steps"></span></h3>
-      <div id="planCfg">
-        <div class="planhead">
-          <label class="fld"><span class="lbl">Azione bonus</span><select id="pBa"></select></label>
-          <button class="btn b sm" id="bBa" type="button">Usa l'azione bonus</button>
-        </div>
-        <div class="planhead" style="margin-top:8px">
-          <label class="fld"><span class="lbl">Azione</span><select id="pAct"></select></label>
-          <button class="btn b sm" id="bAct" type="button">Usa l'azione</button>
-        </div>
-        <div id="atkCfg">
-          <div class="lbl" style="margin:12px 0 4px">Attacchi</div>
-          <div class="cfg" id="cfgRows"></div>
-        </div>
-        <div class="togs">
-          <label class="tog"><input type="checkbox" id="oPara">Bersaglio paralizzato</label>
-          <label class="tog"><input type="checkbox" id="oUnd">Non morto o immondo</label>
-          <label class="tog"><input type="checkbox" id="oDis">Svantaggio</label>
-        </div>
-        <div class="row" style="margin-top:10px"><button class="btn p" id="bReady" type="button">Prepara i tiri</button><span class="muted small" id="cfgHint"></span></div>
-      </div>
-      <div id="planRoll" hidden>
-        <div class="plan" id="plan"></div>
-        <div class="row" style="margin-top:10px"><button class="btn sm" id="bEdit" type="button">Modifica il piano</button><span class="muted small" id="planFoot"></span></div>
-      </div>
-    </div>
-    <div class="card a-pf">
-      <h3>Punti ferita</h3>
-      <div class="hpbig"><span class="cur num" id="hpCur">58</span><span class="max" id="hpMax">/ 58</span><span class="muted small" id="hpTmpL"></span></div>
-      <div class="hpbar"><i id="hpBar" style="width:100%"></i></div>
-      <div class="row">
-        <input class="n" id="hpAmt" type="number" inputmode="numeric" min="0" value="5" aria-label="Quantità">
-        <button class="btn r" id="bDmg" type="button">Danno</button>
-        <button class="btn p" id="bHeal" type="button">Cura</button>
-        <button class="btn b" id="bTmp" type="button">PF temp</button>
-      </div>
-      <div class="alert" id="concAlert" hidden><span id="concAtxt"></span><div class="row" style="margin-top:8px"><button class="btn p sm" id="csOk" type="button">Superato</button><button class="btn r sm" id="csKo" type="button">Fallito</button></div></div>
-      <div class="alert red" id="agaAlert" hidden></div>
-      <div class="lbl" style="margin:14px 0 6px">Imposizione delle Mani · <span class="num" id="lohCur">30</span> / 30</div>
-      <div class="row">
-        <button class="btn b sm" id="bLohSelf" type="button">Su di te</button>
-        <button class="btn sm" id="bLohAlly" type="button">Su un alleato</button>
-      </div>
-      <p class="muted small" style="margin:6px 0 0">Usa il numero scritto sopra. 5 punti curano una malattia o un veleno.</p>
-    </div>
-    <div class="card a-ris">
-      <h3>Risorse</h3>
-      <div class="res r2 r1">
-        <div>Slot di 1°</div><div class="pips" data-g="s1"></div>
-        <div>Slot di 2°</div><div class="pips" data-g="s2"></div>
-        <div>Incanalare Divinità<small>riposo breve</small></div><div class="pips" data-g="cd"></div>
-        <div>Colpo tonante<small>riposo breve</small></div><div class="pips" data-g="ton"></div>
-        <div>Tenacia Implacabile<small>riposo lungo</small></div><div class="pips" data-g="ten"></div>
-        <div>Potere Divino Incanalato<small>riposo lungo</small></div><div class="pips" data-g="exec"></div>
-        <div>Percezione del Divino<small>riposo lungo</small></div><div class="pips" data-g="sense"></div>
-        <div>Dadi vita (d10)<small>riposo lungo: +3</small></div><div class="pips" data-g="hd"></div>
-      </div>
-    </div>
-    <div class="card a-rea">
-      <h3>Reazioni e altro</h3>
-      <div class="qa">
-        <button class="btn b" id="bAooS" type="button">Opportunità · Sentenza<small>reazione · 1,5 m</small></button>
-        <button class="btn b" id="bAooR" type="button">Opportunità · Il Richiamo<small>reazione · 3 m</small></button>
-        <button class="btn b" id="bParry" type="button">Parata<small>reazione · +2 CA · Il Richiamo</small></button>
-        <button class="btn b" id="bWcCmd" type="button">Comando<small>al posto dell'opportunità · Incantatore da Guerra</small></button>
-        <button class="btn" id="bHarness" type="button">Potere Divino Incanalato<small>bonus · Incanalare → slot</small></button>
-        <button class="btn" id="bSense" type="button">Percezione del Divino<small>azione · 18 m</small></button>
-        <button class="btn" id="bDeath" type="button">TS contro la morte<small>cosa tirare</small></button>
-      </div>
-      <div class="plan" id="reactOut" hidden style="margin-top:10px"></div>
-      <div class="out" id="infoOut" hidden></div>
-    </div>
-    <div class="card a-rip">
-      <h3>Riposi e morte</h3>
-      <div class="res r2 r1">
-        <div>Successi</div><div class="pips" data-g="dsS"></div>
-        <div>Fallimenti</div><div class="pips" data-g="dsF"></div>
-      </div>
-      <div class="row" style="margin-top:10px">
-        <button class="btn" id="bHd" type="button">Spendi un dado vita</button>
-        <button class="btn" id="bShort" type="button">Riposo breve</button>
-        <button class="btn p" id="bLong" type="button">Riposo lungo</button>
-      </div>
-      <p class="muted small" style="margin:10px 0 0">Riposo breve: tornano Incanalare Divinità e Colpo tonante. Riposo lungo: PF, slot, Imposizione delle Mani, Tenacia, Percezione del Divino e metà dei dadi vita.</p>
-    </div>
-  </div>
-</section>
-
-<!-- INCANTESIMI -->
-<section role="tabpanel" id="spell" aria-labelledby="t-spell" hidden>
-  <div class="conc" id="concBar" hidden><span id="concTxt"></span><button class="btn sm" id="bConcEnd" type="button" style="color:var(--blue)">Termina concentrazione</button></div>
-  <div class="stats4">
-    <div class="st4"><div class="v">16</div><div class="l">CD tiri salvezza</div></div>
-    <div class="st4"><div class="v">+8</div><div class="l">Attacco con incantesimi</div></div>
-    <div class="st4"><div class="v">8 + 4</div><div class="l">Preparati + giuramento</div></div>
-    <div class="st4"><div class="v" id="slotSum">4 · 2</div><div class="l">Slot rimasti 1° · 2°</div></div>
-  </div>
-  <div id="spellList"></div>
-  <div class="lvhead"><span class="b">LE SENTENZE</span><span class="ln"></span></div>
-  <div class="combo">
-    <div class="cb"><b>Il Verdetto</b><div><span>Prima</span><span>Armatura di Agathys</span><span>T1</span><span>Presenza Conquistatrice: chi fallisce è spaventato e non si avvicina</span><span>T2+</span><span>2 colpi di Sentenza e Fendente sul vicino; Colpo tonante su chi ha resistito</span></div></div>
-    <div class="cb hot"><b>L'Esecuzione</b><div><span>T1</span><span>Blocca Persone sul capo</span><span>T2</span><span>Colpi pesanti: ogni colpo è un critico. Punizione di 2°, poi attacco bonus del Maestro</span></div></div>
-    <div class="cb"><b>L'Uncino</b><div><span>Azione</span><span>Il Richiamo sulla preda che fugge: la trascini di 3 m</span><span>Poi</span><span>Finisci con Sentenza. Dal 7° la tiri dentro l'aura</span></div></div>
-    <div class="cb"><b>L'Interrogatorio</b><div><span>Prima</span><span>Zona di Verità, Intimidire +11</span><span>Poi</span><span>Comando: «Confessa»</span></div></div>
-  </div>
-</section>
-
-<!-- PRIVILEGI -->
-<section role="tabpanel" id="skill" aria-labelledby="t-skill" hidden>
-  <div class="grid g3">
+  <details class="card privs" style="margin-top:14px">
+    <summary><h3>Privilegi, talenti e regole</h3><span class="muted small">giuramento, razza, armi, talenti, background</span></summary>
+    <div class="grid g3" style="margin-top:12px">
     <div class="card span2">
       <h3>Giuramento della Conquista</h3>
       <div class="feat"><b>Presenza Conquistatrice</b><span class="tg">Incanalare · azione</span> Ogni creatura che scegli entro 9 m fa un TS Saggezza CD 16 o resta spaventata per 1 minuto. Ripete il tiro alla fine di ogni suo turno.</div>
@@ -579,7 +496,131 @@ select:disabled{opacity:.6}
       <p class="muted small" style="margin:10px 0 0">Il Maestro delle Armi Grandi ti dà un attacco con l'azione bonus dopo un critico o un'uccisione.</p>
     </div>
   </div>
+  </details>
 </section>
+
+<!-- COMBATTIMENTO -->
+<section role="tabpanel" id="combat" aria-labelledby="t-combat">
+  <div class="cgrid">
+  <div class="cL">
+    <div class="card a-mio">
+      <h3>Il tuo turno <button class="btn sm" id="bClear" type="button">Azzera</button></h3>
+      <div class="turnbox">
+        <div class="trow"><span class="pl">Bonus</span><div class="rc"><select id="t_ba" aria-label="Azione bonus"><option value="none">Nessuna azione bonus</option><option value="spirC">Arma Spirituale · evoca e attacca</option><option value="spirA">Arma Spirituale · attacca</option><option value="wrath">Punizione Iraconda</option><option value="favor">Favore Divino</option><option value="harness">Potere Divino Incanalato</option><option value="gwm">Attacco del Maestro (critico o uccisione)</option><option value="poz">Bevi una pozione</option></select></div></div>
+        <div class="ro" id="o_ba"></div>
+        <div class="trow"><span class="pl">Azione</span><div class="rc"><select id="t_act" aria-label="Azione"><optgroup label="Attacco"><option value="atk">Attacco · 2 colpi</option></optgroup><optgroup label="Incanalare e incantesimi"><option value="terror">Presenza Conquistatrice</option><option value="hold">Blocca Persone · 2°</option><option value="ben">Benedizione · 1°</option><option value="cmd">Comando · 1°</option><option value="aga">Armatura di Agathys · 1°</option><option value="cure">Cura Ferite · 1°</option><option value="loh">Imposizione delle Mani</option></optgroup><optgroup label="Altre azioni"><option value="dodge">Schivata</option><option value="dash">Scatto</option><option value="dis">Disimpegno</option><option value="altro">Altro (Aiutare, oggetto, Preparare)</option></optgroup></select></div></div>
+        <div class="ro" id="o_act"></div>
+        <div id="atkRows">
+          <div class="trow"><span class="pl">Bersaglio</span><div class="rc"><label class="pk sm"><input type="checkbox" id="t_para"><span>Paralizzato</span></label><label class="pk sm"><input type="checkbox" id="t_prone"><span>A terra</span></label><label class="pk sm"><input type="checkbox" id="t_und"><span>Non morto o immondo</span></label></div></div>
+          <div class="atkb"><div class="trow"><span class="pl">1° colpo</span><div class="rc"><select id="t_a1" aria-label="1° colpo"><option value="sent">Sentenza +1</option><option value="rich">Il Richiamo</option><option value="giav">Giavellotto</option><option value="shove">Spinta a terra</option></select>
+            <label class="pk sm"><input type="checkbox" id="t_g1"><span>Pesante</span></label><label class="pk sm"><input type="checkbox" id="t_v1"><span>Vant.</span></label><label class="pk sm"><input type="checkbox" id="t_d1"><span>Svant.</span></label><label class="pk sm"><input type="checkbox" id="t_p1_1"><span>Pun. 1°</span></label><label class="pk sm"><input type="checkbox" id="t_p1_2"><span>Pun. 2°</span></label><label class="pk sm"><input type="checkbox" id="t_f1"><span>Fendente</span></label><label class="pk sm"><input type="checkbox" id="t_k1"><span>Tonante</span></label></div></div>
+          <div class="ro" id="o_a1"></div></div>
+          <div class="atkb"><div class="trow"><span class="pl">2° colpo</span><div class="rc"><select id="t_a2" aria-label="2° colpo"><option value="sent">Sentenza +1</option><option value="rich">Il Richiamo</option><option value="giav">Giavellotto</option><option value="shove">Spinta a terra</option></select>
+            <label class="pk sm"><input type="checkbox" id="t_g2"><span>Pesante</span></label><label class="pk sm"><input type="checkbox" id="t_v2"><span>Vant.</span></label><label class="pk sm"><input type="checkbox" id="t_d2"><span>Svant.</span></label><label class="pk sm"><input type="checkbox" id="t_p2_1"><span>Pun. 1°</span></label><label class="pk sm"><input type="checkbox" id="t_p2_2"><span>Pun. 2°</span></label><label class="pk sm"><input type="checkbox" id="t_f2"><span>Fendente</span></label><label class="pk sm"><input type="checkbox" id="t_k2"><span>Tonante</span></label></div></div>
+          <div class="ro" id="o_a2"></div></div>
+        </div>
+        <div id="row3" hidden>
+          <div class="atkb"><div class="trow"><span class="pl">Colpo bonus</span><div class="rc"><select id="t_a3" aria-label="Colpo bonus"><option value="sent">Sentenza +1</option><option value="rich">Il Richiamo</option></select>
+            <label class="pk sm"><input type="checkbox" id="t_g3"><span>Pesante</span></label><label class="pk sm"><input type="checkbox" id="t_v3"><span>Vant.</span></label><label class="pk sm"><input type="checkbox" id="t_d3"><span>Svant.</span></label><label class="pk sm"><input type="checkbox" id="t_p3_1"><span>Pun. 1°</span></label><label class="pk sm"><input type="checkbox" id="t_p3_2"><span>Pun. 2°</span></label><label class="pk sm"><input type="checkbox" id="t_f3"><span>Fendente</span></label><label class="pk sm"><input type="checkbox" id="t_k3"><span>Tonante</span></label></div></div>
+          <div class="ro" id="o_a3"></div></div>
+        </div>
+        <div id="twarn"></div>
+      </div>
+    </div>
+    <div class="card a-rea">
+      <h3>Reazioni e altro</h3>
+      <div class="qa">
+        <button class="btn b" id="bAooS" type="button">Opportunità · Sentenza<small>reazione · 1,5 m</small></button>
+        <button class="btn b" id="bAooR" type="button">Opportunità · Il Richiamo<small>reazione · 3 m</small></button>
+        <button class="btn b" id="bParry" type="button">Parata<small>reazione · +2 CA · Il Richiamo</small></button>
+        <button class="btn b" id="bWcCmd" type="button">Comando<small>al posto dell'opportunità · Incantatore da Guerra</small></button>
+        <button class="btn" id="bHarness" type="button">Potere Divino Incanalato<small>bonus · Incanalare → slot</small></button>
+        <button class="btn" id="bSense" type="button">Percezione del Divino<small>azione · 18 m</small></button>
+        <button class="btn" id="bDeath" type="button">TS contro la morte<small>cosa tirare</small></button>
+      </div>
+            <div class="out" id="infoOut" hidden></div>
+    </div>
+  </div>
+  <div class="cR">
+    <div class="card a-turno">
+      <h3>Turno ed effetti <span class="chip a" id="reactChip">Reazione pronta</span></h3>
+      <div class="rnd"><span class="lbl">Turno</span><span class="v num" id="rndV">—</span></div>
+      <div class="row" style="margin-bottom:10px">
+        <button class="btn p" id="bRound" type="button">Inizio del tuo turno</button>
+        <button class="btn sm" id="bEnd" type="button">Fine scontro</button>
+      </div>
+      <div class="effs" id="effs"></div>
+      <p class="muted small" id="effEmpty" style="margin:6px 0 0">Nessun effetto attivo. Incantesimi, Presenza Conquistatrice e Colpo tonante compaiono qui con i turni che restano.</p>
+    </div>
+    <div class="card a-pf">
+      <h3>Punti ferita</h3>
+      <div class="hpbig"><span class="cur num" id="hpCur">58</span><span class="max" id="hpMax">/ 58</span><span class="muted small" id="hpTmpL"></span></div>
+      <div class="hpbar"><i id="hpBar" style="width:100%"></i></div>
+      <div class="row">
+        <input class="n" id="hpAmt" type="number" inputmode="numeric" min="0" value="5" aria-label="Quantità">
+        <button class="btn r" id="bDmg" type="button">Danno</button>
+        <button class="btn p" id="bHeal" type="button">Cura</button>
+        <button class="btn b" id="bTmp" type="button">PF temp</button>
+      </div>
+      <div class="alert" id="concAlert" hidden><span id="concAtxt"></span><div class="row" style="margin-top:8px"><button class="btn p sm" id="csOk" type="button">Superato</button><button class="btn r sm" id="csKo" type="button">Fallito</button></div></div>
+      <div class="alert red" id="agaAlert" hidden></div>
+      <div class="lbl" style="margin:14px 0 6px">Imposizione delle Mani · <span class="num" id="lohCur">30</span> / 30</div>
+      <div class="row">
+        <button class="btn b sm" id="bLohSelf" type="button">Su di te</button>
+        <button class="btn sm" id="bLohAlly" type="button">Su un alleato</button>
+      </div>
+      <p class="muted small" style="margin:6px 0 0">Usa il numero scritto sopra. 5 punti curano una malattia o un veleno.</p>
+    </div>
+    <div class="card a-ris">
+      <h3>Risorse</h3>
+      <div class="res r2 r1">
+        <div>Slot di 1°</div><div class="pips" data-g="s1"></div>
+        <div>Slot di 2°</div><div class="pips" data-g="s2"></div>
+        <div>Incanalare Divinità<small>riposo breve</small></div><div class="pips" data-g="cd"></div>
+        <div>Colpo tonante<small>riposo breve</small></div><div class="pips" data-g="ton"></div>
+        <div>Tenacia Implacabile<small>riposo lungo</small></div><div class="pips" data-g="ten"></div>
+        <div>Potere Divino Incanalato<small>riposo lungo</small></div><div class="pips" data-g="exec"></div>
+        <div>Percezione del Divino<small>riposo lungo</small></div><div class="pips" data-g="sense"></div>
+        <div>Dadi vita (d10)<small>riposo lungo: +3</small></div><div class="pips" data-g="hd"></div>
+      </div>
+    </div>
+    <div class="card a-rip">
+      <h3>Riposi e morte</h3>
+      <div class="res r2 r1">
+        <div>Successi</div><div class="pips" data-g="dsS"></div>
+        <div>Fallimenti</div><div class="pips" data-g="dsF"></div>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <button class="btn" id="bHd" type="button">Spendi un dado vita</button>
+        <button class="btn" id="bShort" type="button">Riposo breve</button>
+        <button class="btn p" id="bLong" type="button">Riposo lungo</button>
+      </div>
+      <p class="muted small" style="margin:10px 0 0">Riposo breve: tornano Incanalare Divinità e Colpo tonante. Riposo lungo: PF, slot, Imposizione delle Mani, Tenacia, Percezione del Divino e metà dei dadi vita.</p>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- INCANTESIMI -->
+<section role="tabpanel" id="spell" aria-labelledby="t-spell" hidden>
+  <div class="conc" id="concBar" hidden><span id="concTxt"></span><button class="btn sm" id="bConcEnd" type="button" style="color:var(--blue)">Termina concentrazione</button></div>
+  <div class="stats4">
+    <div class="st4"><div class="v">16</div><div class="l">CD tiri salvezza</div></div>
+    <div class="st4"><div class="v">+8</div><div class="l">Attacco con incantesimi</div></div>
+    <div class="st4"><div class="v">8 + 4</div><div class="l">Preparati + giuramento</div></div>
+    <div class="st4"><div class="v" id="slotSum">4 · 2</div><div class="l">Slot rimasti 1° · 2°</div></div>
+  </div>
+  <div id="spellList"></div>
+  <div class="lvhead"><span class="b">LE SENTENZE</span><span class="ln"></span></div>
+  <div class="combo">
+    <div class="cb"><b>Il Verdetto</b><div><span>Prima</span><span>Armatura di Agathys</span><span>T1</span><span>Presenza Conquistatrice: chi fallisce è spaventato e non si avvicina</span><span>T2+</span><span>2 colpi di Sentenza e Fendente sul vicino; Colpo tonante su chi ha resistito</span></div></div>
+    <div class="cb hot"><b>L'Esecuzione</b><div><span>T1</span><span>Blocca Persone sul capo</span><span>T2</span><span>Colpi pesanti: ogni colpo è un critico. Punizione di 2°, poi attacco bonus del Maestro</span></div></div>
+    <div class="cb"><b>L'Uncino</b><div><span>Azione</span><span>Il Richiamo sulla preda che fugge: la trascini di 3 m</span><span>Poi</span><span>Finisci con Sentenza. Dal 7° la tiri dentro l'aura</span></div></div>
+    <div class="cb"><b>L'Interrogatorio</b><div><span>Prima</span><span>Zona di Verità, Intimidire +11</span><span>Poi</span><span>Comando: «Confessa»</span></div></div>
+  </div>
+</section>
+
+
 
 <!-- ZAINO -->
 <section role="tabpanel" id="bag" aria-labelledby="t-bag" hidden>
@@ -664,8 +705,7 @@ select:disabled{opacity:.6}
 <script>
 (function(){
 const BASEHP=58, SLOTMAX={1:4,2:2}, LOHMAX=30;
-const DEF={hp:58,tmp:0,aga:0,used:{1:0,2:0},cd:0,terror:false,ten:0,sense:0,hd:0,loh:30,conc:"",dsS:0,dsF:0,giav:5,torce:3,paletti:3,holy:true,olio:true,pozioni:"",prede:"",mr:0,ma:0,mo:0,mp:0,tab:"combat",round:0,eff:{},aid:false,wrath:false,ton:0,exec:0,react:false,rx:null,concDC:0,
-  plan:{ba:"",act:"atk",step:"cfg",baDone:false,actDone:false,para:false,und:false,dis:false,fendUsed:false,nid:0,rows:[],a:[{w:"sent",g:false,v:false},{w:"sent",g:false,v:false}]}};
+const DEF={hp:58,tmp:0,aga:0,used:{1:0,2:0},cd:0,terror:false,ten:0,sense:0,hd:0,loh:30,conc:"",dsS:0,dsF:0,giav:5,torce:3,paletti:3,holy:true,olio:true,pozioni:"",prede:"",mr:0,ma:0,mo:0,mp:0,tab:"combat",round:0,eff:{},aid:false,wrath:false,ton:0,exec:0,react:false,turn:null};
 let S=JSON.parse(JSON.stringify(DEF));
 const $=id=>document.getElementById(id);
 function maxhp(){return BASEHP+(S.aid?5:0)}
@@ -775,7 +815,6 @@ $("csKo").addEventListener("click",()=>{const was=S.conc;endConc();toast(was+" �
 /* --- round ed effetti --- */
 function durTxt(r){return r>=600?Math.round(r/600)+" h":r>10?Math.round(r/10)+" min":r+(r===1?" turno":" turni")}
 function expire(k){delete S.eff[k];if(S.conc===k)endConc();if(k==="Presenza Conquistatrice")S.terror=false;if(k==="Aiuto"){S.aid=false;S.hp=Math.min(S.hp,maxhp())}}
-function resetTurn(){const P=S.plan;Object.assign(P,{ba:"",act:"atk",step:"cfg",baDone:false,actDone:false,rows:[],fendUsed:false,para:false,und:false,dis:false});P.a=[{w:"sent",g:false,v:false},{w:"sent",g:false,v:false}];S.react=false;S.rx=null}
 function renderCombat(){
   $("rndV").textContent=S.round||"—";
   const keys=Object.keys(S.eff);$("effEmpty").hidden=keys.length>0;
@@ -784,167 +823,137 @@ function renderCombat(){
   const rc=$("reactChip");rc.textContent=S.react?"Reazione usata":"Reazione pronta";rc.className="chip"+(S.react?" c":" a");
   ["bAooS","bAooR","bParry","bWcCmd"].forEach(id=>$(id).disabled=S.react);if(!freeSlot(1))$("bWcCmd").disabled=true;
   $("bSense").disabled=S.sense>=6;$("bHarness").disabled=S.exec>=1||S.cd>=1;
-  const ro=$("reactOut");ro.hidden=!S.rx;ro.innerHTML=S.rx?rowHtml(S.rx,"x",0):"";
-  renderPlan();
+  renderTurn();
 }
 $("bRound").addEventListener("click",()=>{if(S.round>0){for(const k of Object.keys(S.eff)){S.eff[k].r--;if(S.eff[k].r<=0){expire(k);toast(k+" è terminato")}}}
-  S.round++;resetTurn();$("infoOut").hidden=true;renderAll();save()});
+  S.round++;S.react=false;$("infoOut").hidden=true;resetTurn();renderAll();save()});
 $("bEnd").addEventListener("click",()=>{for(const k of Object.keys(S.eff)){if(S.eff[k].r<=10)expire(k)}
-  S.terror=false;S.round=0;resetTurn();toast("Fine scontro: gli effetti da 1 minuto sono terminati");renderAll();save()});
+  S.terror=false;S.round=0;S.react=false;resetTurn();toast("Fine scontro: gli effetti da 1 minuto sono terminati");renderAll();save()});
 
-/* --- il turno: la scheda dice cosa tirare, i dadi li tiri tu --- */
+/* --- il tuo turno: scelte sempre visibili, i tiri si aggiornano da soli; i dadi li tiri tu --- */
 const W={
   sent:{n:"Sentenza +1",hit:9,dn:2,ds:6,mod:6,str:5,t:"taglienti",melee:1,heavy:1,gwf:1,weapon:1,smite:1,savage:1,close:1},
-  rich:{n:"Il Richiamo",hit:8,dn:1,ds:4,mod:5,t:"taglienti",melee:1,weapon:1,smite:1,savage:1,note:"Portata 3 m. Su un paralizzato il critico automatico vale solo se sei entro 1,5 m."},
-  giav:{n:"Giavellotto",hit:8,dn:1,ds:6,mod:5,t:"perforanti",weapon:1,ranged:1,note:"Lancio 9/36 m. Oltre 9 m hai svantaggio."},
-  shove:{n:"Spinta a terra (Atletica)",shove:1},
-  spir:{n:"Arma Spirituale",hit:8,dn:1,ds:8,mod:5,t:"forza",spell:1,note:"Attacco con incantesimo entro 1,5 m dall'arma; prima puoi spostarla di 6 m."}
+  rich:{n:"Il Richiamo",hit:8,dn:1,ds:4,mod:5,t:"taglienti",melee:1,weapon:1,smite:1,savage:1},
+  giav:{n:"Giavellotto",hit:8,dn:1,ds:6,mod:5,t:"perforanti",weapon:1,ranged:1},
+  shove:{n:"Spinta a terra",shove:1},
+  spir:{n:"Arma Spirituale",hit:8,dn:1,ds:8,mod:5,t:"forza"}
 };
-const BA={"":"Nessuna","spirC":"Arma Spirituale · evoca e attacca (slot 2°)","spirA":"Arma Spirituale · attacca","wrath":"Punizione Iraconda (slot 1°)","favor":"Favore Divino (slot 1°)","harness":"Potere Divino Incanalato","altro":"Altro"};
-const ACT={atk:"Attacco · 2 colpi",terror:"Presenza Conquistatrice (Incanalare)",hold:"Blocca Persone (slot 2°)",ben:"Benedizione (slot 1°)",cmd:"Comando (slot 1°)",aga:"Armatura di Agathys (slot 1°)",cure:"Cura Ferite (slot 1°)",loh:"Imposizione delle Mani (riquadro PF)",altro:"Altro (Scatto, Aiutare, oggetto...)"};
-function baOk(k){if(k==="spirC")return !S.eff["Arma Spirituale"]&&S.used[2]<2;if(k==="spirA")return !!S.eff["Arma Spirituale"];
-  if(k==="wrath"||k==="favor")return !!freeSlot(1);if(k==="harness")return S.exec<1&&S.cd<1&&(S.used[1]>0||S.used[2]>0);return true}
-function actOk(k){if(k==="terror")return S.cd<1;if(k==="hold")return S.used[2]<2;if(k==="cmd"||k==="aga"||k==="ben"||k==="cure")return !!freeSlot(1);return true}
-function useBA(){const P=S.plan;if(P.baDone||!P.ba)return true;const b=P.ba;
-  if(b==="spirC"&&!castSpell("Arma Spirituale"))return false;
-  if(b==="spirA"&&!S.eff["Arma Spirituale"]){toast("Arma Spirituale non è attiva");return false}
-  if(b==="wrath"&&!castSpell("Punizione Iraconda"))return false;
-  if(b==="favor"&&!castSpell("Favore Divino"))return false;
-  if(b==="harness"&&!harness())return false;
-  P.baDone=true;return true}
-function useAct(){const P=S.plan,a=P.act;if(P.actDone||a==="atk")return true;
-  if(a==="terror"&&!terror())return false;
-  if(a==="hold"&&!castSpell("Blocca Persone"))return false;
-  if(a==="cmd"&&!castSpell("Comando"))return false;
-  if(a==="aga"&&!castSpell("Armatura di Agathys"))return false;
-  if(a==="ben"&&!castSpell("Benedizione"))return false;
-  if(a==="cure"){if(!castSpell("Cura Ferite"))return false;info("Cura Ferite","Tira <b>1d8 + 5</b> (+1d8 se hai usato uno slot di 2°). Su di te: scrivi il totale nei PF e tocca Cura.")}
-  P.actDone=true;return true}
-function newRow(w,g,v,kind,from){const P=S.plan;P.nid=(P.nid||0)+1;return{id:P.nid,w,g:!!g,v:!!v,kind:kind||"",from:from||0,r:"",sm:0,ab:"",wr:0,gd:0,kill:0}}
-function rowHit(R){return R.r==="h"||R.r==="c"}
-function isCrit(R){return R.r==="c"||(R.r==="h"&&S.plan.para&&W[R.w].close)}
-function prone(){return S.plan.rows.some(r=>r.w==="shove"&&r.r==="h")}
-function hitTxt(R){const w=W[R.w],P=S.plan,src=[],dsrc=[];if(R.v)src.push("vantaggio");if(P.para)src.push("paralizzato");
-  if(prone()&&R.kind!=="fend"&&R.kind!=="aoo"){if(R.w==="sent"||R.w==="spir")src.push("a terra");else dsrc.push("a terra e sei a più di 1,5 m")}
-  const adv=src.length>0,dis=P.dis||dsrc.length>0;
-  const dice=adv&&!dis?"2d20, tieni il più alto,":dis&&!adv?"2d20, tieni il più basso,":"1d20";
-  return{src,dsrc,dice,bonus:w.hit-(R.g?5:0)+(R.gd?10:0),bless:S.eff["Benedizione"]?" + 1d4":""}}
-function dmgTxt(R,crit){const w=W[R.w],P=S.plan;const n=w.dn*(crit?2:1)+(crit&&w.savage?1:0);
-  const mod=w.mod-(R.kind==="fend"?(w.str||0):0)+(R.g?10:0);const add=[],ex=[];
-  if(S.eff["Favore Divino"]&&w.weapon)add.push((crit?2:1)+"d4 radiosi");
-  if(R.wr)add.push((crit?2:1)+"d6 psichici");
-  if(R.sm)add.push((R.sm+1+(P.und?1:0))*(crit?2:1)+"d8 radiosi");
-  if(w.gwf)ex.push("ritira una volta gli 1 e i 2");
-  if(crit&&w.savage)ex.push("1d"+w.ds+" è di Attacchi Selvaggi");
-  if(R.kind==="fend")ex.push("senza la Forza");
-  return{main:n+"d"+w.ds+"+"+mod+" "+w.t+(add.length?" + "+add.join(" + "):""),ex}}
-function rowHtml(R,x,i){const w=W[R.w],P=S.plan,H=hitTxt(R),hit=rowHit(R),crit=isCrit(R);
-  const lab={fend:"Fendente · 2° nemico",gwm:"Bonus del Maestro",spir:"Azione bonus",aoo:"Attacco di opportunità"}[R.kind]||((i+1)+"° colpo");
-  const B=(op,t,on,dis,cls)=>`<button type="button" class="${cls||""}" data-x="${x}" data-i="${i}" ${op.length===1?`data-r="${op}"`:`data-op="${op}"`} aria-pressed="${!!on}" ${dis?"disabled":""}>${t}</button>`;
-  if(w.shove)return `<div class="pr ${R.r==="h"?"hit":R.r==="m"?"miss":""}"><div class="l1"><b>${lab} · Spinta a terra</b><span>Prova <span class="dice">1d20 + 8</span></span></div>
-    <div class="more">${R.r==="h"?"<b>È a terra.</b> I tuoi colpi in mischia entro 1,5 m hanno vantaggio; con Il Richiamo da 3 m o col giavellotto hai svantaggio. Rialzarsi gli costa metà movimento.":R.r==="m"?"Resta in piedi.":"Atletica contro Atletica o Acrobazia del bersaglio, a sua scelta. Funziona su creature fino a una taglia più grande di te. Prende il posto di un colpo."}</div>
-    <div class="res3">${B("h","Riuscita",R.r==="h",0,"h")}${B("m","Fallita",R.r==="m",0,"m")}</div></div>`;
-  let h=`<div class="pr ${crit?"crit":R.r==="h"?"hit":R.r==="m"?"miss":""}"><div class="l1"><b>${lab} · ${w.n}${R.g?" · pesante":""}</b><span>Colpire <span class="dice">${H.dice} + ${H.bonus}${H.bless}</span></span>`;
-  if(!R.r)h+=`<span>Danni <span class="dice">${dmgTxt(R,false).main}</span></span>`;
-  h+="</div>";const more=[];
-  if(!R.r){if(H.src.length)more.push("Vantaggio da: "+H.src.join(", ")+(H.dsrc.length||P.dis?" (annullato dallo svantaggio)":"")+".");
-    if(H.dsrc.length)more.push("Svantaggio: il bersaglio è "+H.dsrc.join(", ")+".");
-    if(R.gd)more.push("Il +10 di Colpo Guidato è già nel totale.");
-    if(S.wrath&&w.weapon&&w.melee)more.push("Punizione Iraconda in attesa: +1d6 psichici al primo colpo a segno.");
-    if(P.para&&w.close)more.push("Paralizzato: se colpisce è critico, segna Colpito.");
-    if(w.note)more.push(w.note)}
-  else if(hit){const D=dmgTxt(R,crit);more.push((crit?"Critico":"Danni")+": <b>"+D.main+"</b>"+(D.ex.length?" ("+D.ex.join("; ")+")":"")+".");
-    if(R.wr)more.push("Punizione Iraconda: TS Saggezza CD 16 o è spaventato.");
-    if(R.w==="rich")more.push("Puoi trascinarlo di 3 m verso di te (TS Forza CD 16), una volta per turno.");
-    if(R.w==="giav")more.push("Azzoppare: −3 m di velocità e niente Disimpegno fino all'inizio del tuo prossimo turno.");
-    if(R.ab==="ton")more.push("Colpo tonante: chi scegli entro 3 m dal bersaglio fa TS Saggezza CD 16 o è spaventato.");
-    if(R.ab==="fend")more.push("Fendente: tira sul 2° nemico qui sotto.");
-    if(crit&&w.smite&&!R.sm&&freeSlot(1))more.push("Sul critico la Punizione raddoppia i dadi: è il momento di usarla.")}
-  else more.push("Mancato.");
-  if(more.length)h+=`<div class="more">${more.join(" ")}</div>`;
-  h+=`<div class="res3" role="group" aria-label="Esito">${B("h","Colpito",R.r==="h",0,"h")}${B("c","Critico",R.r==="c",0,"c")}${B("m","Mancato",R.r==="m",0,"m")}`;
-  if(!hit)h+=B("gd","Colpo Guidato +10",R.gd,!R.gd&&S.cd>=1,"o");
-  if(!R.r&&w.heavy&&x==="x")h+=B("g","Colpo pesante",R.g,0,"o");
-  h+="</div>";
-  if(hit){const ops=[];
-    if(w.smite)[1,2].forEach(l=>ops.push(B("sm"+l,"Punizione "+l+"° · "+(l+1+(P.und?1:0))*(crit?2:1)+"d8",R.sm===l,R.sm!==l&&S.used[l]>=SLOTMAX[l],"s")));
-    if(R.w==="sent"){if(x==="p"&&R.kind!=="fend")ops.push(B("fend","Fendente",R.ab==="fend",R.ab!=="fend"&&(R.ab||P.fendUsed),"o"));
-      ops.push(B("ton","Colpo tonante",R.ab==="ton",R.ab!=="ton"&&(R.ab||S.ton>=1),"o"))}
-    if(x==="p"&&w.melee&&w.weapon&&R.kind!=="gwm")ops.push(B("kill",crit?"Attacco bonus del Maestro":"L'ha ucciso: attacco bonus",R.kill,0,"o"+(!R.kill&&P.baDone?" off":"")));
-    if(ops.length)h+=`<div class="res3 ops">${ops.join("")}</div>`}
-  return h+"</div>"}
-function renderPlan(){const P=S.plan,roll=P.step==="roll";
-  const sb=$("pBa");sb.innerHTML=Object.keys(BA).map(k=>`<option value="${k}" ${baOk(k)||k===P.ba?"":"disabled"}>${BA[k]}</option>`).join("");sb.value=P.ba;sb.disabled=P.baDone;
-  const sa=$("pAct");sa.innerHTML=Object.keys(ACT).map(k=>`<option value="${k}" ${actOk(k)||k===P.act?"":"disabled"}>${ACT[k]}</option>`).join("");sa.value=P.act;sa.disabled=P.actDone;
-  $("bBa").hidden=!P.ba||P.ba==="altro";$("bBa").disabled=P.baDone;$("bBa").textContent=P.baDone?"Azione bonus usata":"Usa l'azione bonus";
-  $("bAct").hidden=P.act==="atk"||P.act==="altro"||P.act==="loh";$("bAct").disabled=P.actDone;$("bAct").textContent=P.actDone?"Azione usata":"Usa l'azione";
-  $("oPara").checked=P.para;$("oUnd").checked=P.und;$("oDis").checked=P.dis;
-  $("planCfg").hidden=roll;$("planRoll").hidden=!roll;$("steps").textContent=roll?"· 2 di 2: tira e segna":"· 1 di 2: pianifica";
-  if(!roll){$("atkCfg").hidden=P.act!=="atk";
-    $("cfgRows").innerHTML=P.a.map((A,i)=>{const opts=["sent","rich","giav","shove"].map(k=>`<option value="${k}" ${k===A.w?"selected":""}>${W[k].n}</option>`).join("");
-      return `<div class="cr"><b>${i+1}°</b><select class="pw" data-i="${i}" aria-label="Arma del colpo ${i+1}">${opts}</select>
-        ${W[A.w].heavy?`<label class="tog"><input type="checkbox" class="pg" data-i="${i}" ${A.g?"checked":""}>Colpo pesante −5/+10</label>`:""}
-        ${W[A.w].shove?"":`<label class="tog"><input type="checkbox" class="pv" data-i="${i}" ${A.v?"checked":""}>Vantaggio</label>`}</div>`}).join("");
-    $("cfgHint").textContent=P.para?"Paralizzato: usa sempre il colpo pesante.":P.a[0].w==="shove"?"Se la spinta riesce, il 2° colpo ha vantaggio: mettilo pesante.":"Colpo pesante: conviene contro CA 17 o meno, quasi sempre con vantaggio.";
-    $("cfgRows").querySelectorAll(".pw").forEach(e=>e.addEventListener("change",()=>{const A=S.plan.a[+e.dataset.i];A.w=e.value;if(!W[A.w].heavy)A.g=false;renderAll();save()}));
-    $("cfgRows").querySelectorAll(".pg").forEach(e=>e.addEventListener("change",()=>{S.plan.a[+e.dataset.i].g=e.checked;renderAll();save()}));
-    $("cfgRows").querySelectorAll(".pv").forEach(e=>e.addEventListener("change",()=>{S.plan.a[+e.dataset.i].v=e.checked;renderAll();save()}));
-    return}
-  $("plan").innerHTML=P.rows.length?P.rows.map((R,i)=>rowHtml(R,"p",i)).join(""):`<p class="muted small" style="margin:0">Nessun tiro per colpire in questo turno.${P.act!=="atk"?" Azione: "+ACT[P.act]+".":""}</p>`;
-  const done=P.rows.filter(r=>r.r).length,hits=P.rows.filter(rowHit).length;
-  $("planFoot").textContent=(done?"A segno "+hits+" su "+done+". ":"Tira tutto insieme, poi segna gli esiti. ")+(P.baDone?"":"Azione bonus libera.")}
-function undoHitFx(R){const P=S.plan;
-  if(R.sm){S.used[R.sm]=Math.max(0,S.used[R.sm]-1);R.sm=0}
-  if(R.ab==="ton"){S.ton=0;delete S.eff["Colpo tonante · spaventati"]}
-  if(R.ab==="fend"){dropKids(R,"fend");P.fendUsed=false}
-  if(R.kill){dropKids(R,"gwm");P.baDone=false;R.kill=0}
-  if(R.wr){S.wrath=true;R.wr=0}
-  R.ab=""}
-function dropKids(R,kind){const P=S.plan;P.rows.filter(c=>c.from===R.id&&c.kind===kind).forEach(c=>{undoHitFx(c);if(c.gd)S.cd=0});
-  P.rows=P.rows.filter(c=>!(c.from===R.id&&c.kind===kind))}
-function onRow(e){const b=e.target.closest("button[data-x]");if(!b||b.disabled)return;const P=S.plan,R=b.dataset.x==="x"?S.rx:P.rows[+b.dataset.i];if(!R)return;
-  if(b.dataset.r){const was=rowHit(R);R.r=R.r===b.dataset.r?"":b.dataset.r;const now=rowHit(R);
-    if(was&&!now)undoHitFx(R);
-    if(!was&&now&&S.wrath&&W[R.w].weapon&&W[R.w].melee){R.wr=1;S.wrath=false;toast("Punizione Iraconda: +1d6 psichici sul colpo")}}
-  else{const op=b.dataset.op;
-    if(op==="gd"){if(R.gd){R.gd=0;S.cd=0}else if(S.cd<1){S.cd=1;R.gd=1;toast("Colpo Guidato: +10 al tiro. Incanalare Divinità usato")}}
-    else if(op==="g")R.g=!R.g;
-    else if(op==="sm1"||op==="sm2"){const l=+op.slice(-1);
-      if(R.sm===l){S.used[l]--;R.sm=0}else{if(S.used[l]>=SLOTMAX[l]){toast("Nessuno slot di "+l+"°");return}if(R.sm)S.used[R.sm]--;S.used[l]++;R.sm=l}}
-    else if(op==="fend"){if(R.ab==="fend"){dropKids(R,"fend");P.fendUsed=false;R.ab=""}else if(!R.ab&&!P.fendUsed){R.ab="fend";P.fendUsed=true;P.rows.push(newRow("sent",R.g,false,"fend",R.id))}}
-    else if(op==="ton"){if(R.ab==="ton"){S.ton=0;delete S.eff["Colpo tonante · spaventati"];R.ab=""}else if(!R.ab&&S.ton<1){R.ab="ton";S.ton=1;S.eff["Colpo tonante · spaventati"]={r:1,c:0};toast("Colpo tonante: TS Saggezza CD 16 entro 3 m dal bersaglio")}}
-    else if(op==="kill"){if(!R.kill&&P.baDone){const k=P.rows.find(c=>c.kill);
-      toast(k?"Hai già preso l'attacco bonus del Maestro in questo turno":"Azione bonus già usata"+(P.ba&&BA[P.ba]?" ("+BA[P.ba]+")":"")+". Se è un nuovo turno, tocca «Inizio del tuo turno»");return}
-      if(R.kill){dropKids(R,"gwm");P.baDone=false;R.kill=0}else if(!P.baDone){R.kill=1;P.baDone=true;P.rows.push(newRow("sent",false,false,"gwm",R.id));toast("Attacco bonus del Maestro: è qui sotto")}}}
-  renderAll();save()}
-$("plan").addEventListener("click",onRow);$("reactOut").addEventListener("click",onRow);
-function syncCfg(){const P=S.plan;
-  document.querySelectorAll("#cfgRows .pw").forEach(e=>{const A=P.a[+e.dataset.i];A.w=e.value;if(!W[A.w].heavy)A.g=false;if(W[A.w].shove)A.v=false});
-  document.querySelectorAll("#cfgRows .pg").forEach(e=>P.a[+e.dataset.i].g=e.checked);
-  document.querySelectorAll("#cfgRows .pv").forEach(e=>P.a[+e.dataset.i].v=e.checked);
-  P.para=$("oPara").checked;P.und=$("oUnd").checked;P.dis=$("oDis").checked}
-$("bReady").addEventListener("click",()=>{const P=S.plan;syncCfg();if(!useBA()||!useAct()){renderAll();save();return}
-  P.rows=[];P.fendUsed=false;if(P.act==="atk")P.a.forEach(A=>P.rows.push(newRow(A.w,A.g,A.v)));
-  if(P.ba==="spirC"||P.ba==="spirA")P.rows.push(newRow("spir",false,false,"spir"));
-  P.step="roll";renderAll();save()});
-$("bEdit").addEventListener("click",()=>{const P=S.plan;P.rows.forEach(R=>{undoHitFx(R);if(R.gd)S.cd=0});P.rows=[];P.fendUsed=false;P.step="cfg";renderAll();save()});
-$("bBa").addEventListener("click",()=>{useBA();renderAll();save()});
-$("bAct").addEventListener("click",()=>{useAct();renderAll();save()});
-$("pBa").addEventListener("change",e=>{S.plan.ba=e.target.value;renderAll();save()});
-$("pAct").addEventListener("change",e=>{S.plan.act=e.target.value;renderAll();save()});
-[["oPara","para"],["oUnd","und"],["oDis","dis"]].forEach(([id,k])=>$(id).addEventListener("change",e=>{S.plan[k]=e.target.checked;renderAll();save()}));
+const TDEF={ba:"none",act:"atk",baDone:false,actDone:false,a1:"sent",a2:"sent",a3:"sent",para:false,prone:false,und:false,
+  g1:false,v1:false,d1:false,p1:"",f1:false,k1:false,g2:false,v2:false,d2:false,p2:"",f2:false,k2:false,g3:false,v3:false,d3:false,p3:"",f3:false,k3:false,sp1:0,sp2:0,sp3:0,gd:0};
+const TFLAGS=["para","prone","und"];[1,2,3].forEach(n=>["g","v","d","f","k"].forEach(f=>TFLAGS.push(f+n)));
+function T(){if(!S.turn)S.turn=JSON.parse(JSON.stringify(TDEF));return S.turn}
+function resetTurn(){S.turn=JSON.parse(JSON.stringify(TDEF));syncTurnInputs();renderTurn()}
+function rowW(n){const t=T();if(n===3)return t.ba==="gwm"?W[t.a3]:null;return t.act==="atk"?W[t["a"+n]]:null}
+function firstMeleeWeapon(){for(const n of [1,2,3]){const w=rowW(n);if(w&&w.weapon&&w.melee)return n}return 0}
+function atkHTML(n){const t=T(),w=rowW(n);if(!w)return "";
+  if(w.shove)return `<div class="ri"><span class="ln"><span><span class="k">Prova</span><span class="d">1d20 + 8</span></span><span><small>Atletica contro Atletica o Acrobazia del bersaglio</small></span></span><small>Se riesce cade a terra: spunta «A terra» qui sopra e il colpo dopo ha vantaggio.</small></div>`;
+  const src=[],dsr=[];if(t["v"+n])src.push("vantaggio");if(t.para)src.push("paralizzato");
+  if(t.prone){if(w.ranged)dsr.push("bersaglio a terra e tu sei lontano");else if(n===1||n===2||n===3)src.push("a terra (se sei entro 1,5 m)")}
+  if(t["d"+n])dsr.push("svantaggio");
+  const adv=src.length>0,dis=dsr.length>0,dice=adv&&!dis?"2d20↑":dis&&!adv?"2d20↓":"1d20";
+  const g=w.heavy&&t["g"+n],bonus=w.hit-(g?5:0)+(t.gd===n?10:0),mod=w.mod+(g?10:0);
+  const add=[],addc=[];
+  if(S.eff["Favore Divino"]&&w.weapon){add.push("1d4 radiosi");addc.push("2d4 radiosi")}
+  if(S.wrath&&w.weapon&&w.melee&&firstMeleeWeapon()===n){add.push("1d6 psichici");addc.push("2d6 psichici")}
+  const p=w.smite?t["p"+n]:"";if(p){const d=(+p+1+(t.und?1:0));add.push(d+"d8 radiosi");addc.push(2*d+"d8 radiosi")}
+  const dmg=`${w.dn}d${w.ds}+${mod} ${w.t}${add.length?" + "+add.join(" + "):""}`;
+  const crit=`${w.dn*2+(w.savage?1:0)}d${w.ds}+${mod}${addc.length?" + "+addc.join(" + "):""}`;
+  const notes=[];if(w.gwf)notes.push("ritira una volta gli 1 e i 2");
+  if(adv&&dis)notes.push("vantaggio e svantaggio si annullano");else if(src.length&&!(src.length===1&&src[0]==="vantaggio"))notes.push("vantaggio da "+src.filter(x=>x!=="vantaggio").join(", "));
+  if(t.para&&w.close)notes.push("<b>paralizzato: se colpisce usa i danni da critico</b>");
+  if(n===firstMeleeWeapon()&&S.wrath&&w.weapon&&w.melee)notes.push("Punizione Iraconda: TS Saggezza CD 16 o è spaventato");
+  if(t.prone&&n!==3&&W[t["a"+n]]===W.rich)notes.push("con Il Richiamo da 3 m il bersaglio a terra ti dà svantaggio");
+  if(w===W.rich)notes.push("puoi trascinarlo di 3 m verso di te (TS Forza CD 16)");
+  if(w===W.giav)notes.push("Azzoppare: −3 m e niente Disimpegno");
+  let extra="";
+  if(t["f"+n]&&w===W.sent){const fm=w.mod-w.str+(g?10:0);extra+=`<span class="ln"><span><span class="k">Fendente</span>se colpisci: un 2° nemico entro 1,5 m</span><span><span class="k">Colpire</span><span class="d">1d20 + ${bonus}</span></span><span><span class="k">Danni</span><span class="d">2d6+${fm}</span> <small>senza Forza</small></span></span>`}
+  if(t["k"+n]&&w===W.sent)extra+=`<small>Colpo tonante: se colpisci, chi scegli entro 3 m dal bersaglio fa TS Saggezza CD 16 o è spaventato.</small>`;
+  const btns=[];
+  if(p){const l=+p;btns.push(t["sp"+n]?`<span class="muted small">slot di ${l}° speso</span>`:`<button class="btn sm r" type="button" data-do="smite" data-n="${n}" ${S.used[l]>=SLOTMAX[l]?"disabled":""}>Ha colpito: spendi slot ${l}°</button>`)}
+  if(t["k"+n]&&w===W.sent)btns.push(S.ton>=1?`<span class="muted small">Colpo tonante usato</span>`:`<button class="btn sm b" type="button" data-do="ton">Ha colpito: usa Colpo tonante</button>`);
+  if(!t.gd&&S.cd<1)btns.push(`<button class="btn sm" type="button" data-do="guided" data-n="${n}">Colpo Guidato +10</button>`);
+  if(n<3&&w.melee&&w.weapon&&t.ba!=="gwm"&&!t.baDone)btns.push(`<button class="btn sm" type="button" data-do="gwm">Attacco bonus del Maestro</button>`);
+  return `<div class="ri"><span class="ln"><span><span class="k">Colpire</span><span class="d">${dice} + ${bonus}</span></span><span><span class="k">Danni</span><span class="d">${dmg}</span></span><span><span class="k">Critico</span>${crit}</span></span>${notes.length?`<small>${notes.join(" · ")}</small>`:""}${extra}${btns.length?`<div class="row">${btns.join("")}</div>`:""}</div>`}
+function spirLine(){return `<span class="ln"><span><span class="k">Colpire</span><span class="d">1d20 + 8</span></span><span><span class="k">Danni</span><span class="d">1d8+5</span> <small>forza</small></span><span><span class="k">Critico</span>2d8+5</span></span>`}
+function baHTML(){const t=T(),b=t.ba,done=t.baDone;
+  const btn=(lab,d,dis)=>done?`<span class="muted small">fatto</span>`:`<div class="row"><button class="btn sm p" type="button" data-do="${d}" ${dis?"disabled":""}>${lab}</button></div>`;
+  if(b==="spirC")return S.eff["Arma Spirituale"]?`<div class="ri">L'Arma Spirituale è già attiva: scegli «attacca».</div>`:`<div class="ri"><span>Evochi l'arma entro 18 m e attacchi subito. 1 minuto, niente concentrazione.</span>${done?spirLine():""}${btn("Lancia (slot 2°)","spir",S.used[2]>=2)}</div>`;
+  if(b==="spirA")return S.eff["Arma Spirituale"]?`<div class="ri"><span>Sposta l'arma fino a 6 m e attacca.</span>${spirLine()}</div>`:`<div class="ri w">Non hai un'Arma Spirituale attiva: scegli «evoca».</div>`;
+  if(b==="wrath")return S.wrath?`<div class="ri">Punizione Iraconda attiva: +1d6 psichici al primo colpo in mischia a segno.</div>`:`<div class="ri"><span>Il prossimo colpo in mischia fa +1d6 psichici e spaventa (TS Saggezza CD 16). Concentrazione.</span>${btn("Lancia (slot 1°)","wrath",!freeSlot(1))}</div>`;
+  if(b==="favor")return S.eff["Favore Divino"]?`<div class="ri">Favore Divino attivo: +1d4 radiosi a ogni colpo d'arma.</div>`:`<div class="ri"><span>+1d4 radiosi a ogni colpo d'arma per 1 minuto. Concentrazione.</span>${btn("Lancia (slot 1°)","favor",!freeSlot(1))}</div>`;
+  if(b==="harness")return `<div class="ri"><span>Spendi Incanalare Divinità e recuperi lo slot più alto che hai usato (al massimo di 2°).</span>${btn("Usa ora","harness",S.exec>=1||S.cd>=1)}</div>`;
+  if(b==="gwm")return `<div class="ri">Solo dopo un critico o se hai portato un nemico a 0 PF con un'arma da mischia in questo turno. Il colpo è qui sotto.</div>`;
+  if(b==="poz")return `<div class="ri">Pozione di guarigione su di te: tira <b>2d4 + 2</b> e usa Cura.</div>`;
+  return ""}
+const ACT={atk:"Attacco · 2 colpi",terror:"Presenza Conquistatrice",hold:"Blocca Persone · slot 2°",ben:"Benedizione · slot 1°",cmd:"Comando · slot 1°",aga:"Armatura di Agathys · slot 1°",cure:"Cura Ferite · slot 1°",loh:"Imposizione delle Mani",dodge:"Schivata",dash:"Scatto",dis:"Disimpegno",altro:"Altro"};
+function actHTML(){const t=T(),a=t.act,done=t.actDone;
+  const btn=(lab,d,dis)=>done?"":`<div class="row"><button class="btn sm p" type="button" data-do="${d}" ${dis?"disabled":""}>${lab}</button></div>`;
+  const ok1=!!freeSlot(1);
+  switch(a){
+    case "terror":return `<div class="ri"><span>Chi scegli entro 9 m fa TS Saggezza <b>CD 16</b> o è spaventato per 1 minuto.</span>${done?"<span>Fatto.</span>":btn("Usa (Incanalare Divinità)","terror",S.cd>=1)}</div>`;
+    case "hold":return `<div class="ri"><span>Un umanoide entro 18 m: TS Saggezza <b>CD 16</b> o paralizzato. Poi spunta «Paralizzato»: i tuoi colpi da vicino sono critici.</span>${btn("Lancia (slot 2°)","hold",S.used[2]>=2)}</div>`;
+    case "ben":return `<div class="ri"><span>Fino a 3 creature (anche tu) aggiungono 1d4 ai tiri per colpire e ai TS. Concentrazione.</span>${btn("Lancia (slot 1°)","ben",!ok1)}</div>`;
+    case "cmd":return `<div class="ri"><span>Una parola entro 18 m: TS Saggezza <b>CD 16</b>. «Prono» e i colpi da vicino hanno vantaggio.</span>${btn("Lancia (slot 1°)","cmd",!ok1)}</div>`;
+    case "aga":return `<div class="ri"><span>5 PF temporanei; chi ti colpisce da vicino subisce 5 danni da freddo.</span>${btn("Lancia (slot 1°)","aga",!ok1)}</div>`;
+    case "cure":return `<div class="ri"><span>A contatto: tira <b>1d8 + 5</b> (+1d8 con slot di 2°).</span>${btn("Lancia","cure",!ok1)}</div>`;
+    case "loh":return `<div class="ri">Scrivi i punti nel riquadro Punti ferita e tocca «Su di te» o «Su un alleato». Riserva: ${S.loh}.</div>`;
+    case "dodge":return `<div class="ri">Fino al tuo prossimo turno chi ti attacca ha svantaggio.</div>`;
+    case "dash":return `<div class="ri">Ti muovi di altri 9 m.</div>`;
+    case "dis":return `<div class="ri">Ti muovi senza provocare attacchi di opportunità.</div>`;
+    case "altro":return `<div class="ri">Aiutare, Preparare, usare un oggetto: descrivilo al master.</div>`;
+  }return ""}
+function renderTurn(){const t=T(),atk=t.act==="atk";
+  $("atkRows").hidden=!atk;$("row3").hidden=t.ba!=="gwm";
+  $("o_ba").innerHTML=baHTML();$("o_act").innerHTML=actHTML();
+  [1,2,3].forEach(n=>{$("o_a"+n).innerHTML=atkHTML(n)});
+  const warn=[];const fs=[1,2,3].filter(n=>rowW(n)===W.sent&&t["f"+n]).length;if(fs>1)warn.push("Fendente si usa una volta per turno.");
+  const ks=[1,2,3].filter(n=>rowW(n)===W.sent&&t["k"+n]).length;if(ks>1)warn.push("Colpo tonante si usa una volta per riposo breve.");
+  [1,2,3].forEach(n=>{if(rowW(n)===W.sent&&t["f"+n]&&t["k"+n])warn.push(n+"° colpo: una sola abilità per colpo, Fendente oppure Colpo tonante.")});
+  $("twarn").innerHTML=warn.filter(Boolean).map(w=>`<div class="ri">${w}</div>`).join("");
+  decorTurn()}
+function decorTurn(){const t=T();
+  $("t_ba").classList.toggle("on",t.ba!=="none");$("t_act").classList.toggle("on",t.act!=="atk");
+  [1,2,3].forEach(n=>{const w=W[t["a"+n]]||{};
+    const set=(id,ok)=>{const e=$(id);e.disabled=!ok;if(!ok&&e.checked){e.checked=false;const k=id.slice(2);if(k in t)t[k]=false}};
+    set("t_g"+n,!!w.heavy);set("t_v"+n,!w.shove);set("t_d"+n,!w.shove);set("t_f"+n,w===W.sent);set("t_k"+n,w===W.sent);
+    ["1","2"].forEach(l=>{const e=$("t_p"+n+"_"+l);e.disabled=!w.smite;e.checked=t["p"+n]===l;if(!w.smite&&t["p"+n])t["p"+n]=""})})}
+function syncTurnInputs(){const t=T();$("t_ba").value=t.ba;$("t_act").value=t.act;[1,2,3].forEach(n=>$("t_a"+n).value=t["a"+n]);
+  TFLAGS.forEach(f=>{$("t_"+f).checked=!!t[f]});decorTurn()}
+$("t_ba").addEventListener("change",e=>{const t=T();t.ba=e.target.value;t.baDone=false;renderTurn();save()});
+$("t_act").addEventListener("change",e=>{const t=T();t.act=e.target.value;t.actDone=false;renderTurn();save()});
+[1,2,3].forEach(n=>{$("t_a"+n).addEventListener("change",e=>{T()["a"+n]=e.target.value;renderTurn();save()});
+  ["1","2"].forEach(l=>$("t_p"+n+"_"+l).addEventListener("change",e=>{T()["p"+n]=e.target.checked?l:"";renderTurn();save()}))});
+TFLAGS.forEach(f=>$("t_"+f).addEventListener("change",e=>{T()[f]=e.target.checked;renderTurn();save()}));
+$("bClear").addEventListener("click",()=>{resetTurn();save()});
+$("combat").addEventListener("click",e=>{const b=e.target.closest("[data-do]");if(!b||b.disabled)return;const t=T(),d=b.dataset.do,n=+b.dataset.n;
+  if(d==="smite"){const l=+t["p"+n];if(S.used[l]>=SLOTMAX[l]){toast("Nessuno slot di "+l+"°");return}S.used[l]++;t["sp"+n]=1;toast("Punizione Divina: slot di "+l+"° speso")}
+  else if(d==="ton"){if(S.ton>=1)return;S.ton=1;S.eff["Colpo tonante · spaventati"]={r:1,c:0};toast("Colpo tonante usato")}
+  else if(d==="guided"){if(S.cd>=1)return;S.cd=1;t.gd=n;toast("Colpo Guidato: +10 al "+n+"° colpo. Incanalare Divinità usato")}
+  else if(d==="gwm"){t.ba="gwm";$("t_ba").value="gwm";toast("Attacco bonus del Maestro: il colpo è in fondo")}
+  else if(d==="spir"){if(castSpell("Arma Spirituale"))t.baDone=true}
+  else if(d==="wrath"){if(castSpell("Punizione Iraconda"))t.baDone=true}
+  else if(d==="favor"){if(castSpell("Favore Divino"))t.baDone=true}
+  else if(d==="harness"){if(harness())t.baDone=true}
+  else if(d==="terror"){if(terror())t.actDone=true}
+  else if(d==="hold"){if(castSpell("Blocca Persone"))t.actDone=true}
+  else if(d==="ben"){if(castSpell("Benedizione"))t.actDone=true}
+  else if(d==="cmd"){if(castSpell("Comando"))t.actDone=true}
+  else if(d==="aga"){if(castSpell("Armatura di Agathys"))t.actDone=true}
+  else if(d==="cure"){if(castSpell("Cura Ferite"))t.actDone=true}
+  else return;
+  renderAll();save()});
 
 /* --- reazioni e altro --- */
 function useReact(){if(S.react){toast("Hai già usato la reazione in questo round");return false}S.react=true;return true}
 function info(t,h){const o=$("infoOut");o.hidden=false;o.innerHTML="<b>"+t+"</b><br>"+h}
-$("bAooS").addEventListener("click",()=>{if(!useReact())return;S.rx=newRow("sent",false,false,"aoo");renderAll();save()});
-$("bAooR").addEventListener("click",()=>{if(!useReact())return;S.rx=newRow("rich",false,false,"aoo");renderAll();save()});
+$("bAooS").addEventListener("click",()=>{if(!useReact())return;info("Attacco di opportunità · Sentenza","Colpire <b>1d20 + 9</b> (colpo pesante: + 4 e +10 ai danni) · Danni <b>2d6+6</b> taglienti, ritira 1 e 2 · Critico <b>5d6+6</b>. Se colpisce puoi aggiungere la Punizione: segna lo slot nelle Risorse.");renderAll();save()});
+$("bAooR").addEventListener("click",()=>{if(!useReact())return;info("Attacco di opportunità · Il Richiamo","Portata 3 m. Colpire <b>1d20 + 8</b> · Danni <b>1d4+5</b> taglienti · Critico <b>3d4+5</b>. Se colpisce puoi trascinarlo di 3 m (TS Forza CD 16) o aggiungere la Punizione.");renderAll();save()});
 $("bParry").addEventListener("click",()=>{if(!useReact())return;S.eff["Parata"]={r:1,c:0};toast("Parata: +2 CA contro questo attacco, CA "+ac()+". Serve Il Richiamo in mano");renderAll();save()});
 $("bWcCmd").addEventListener("click",()=>{if(!freeSlot(1)){toast("Nessuno slot disponibile");return}if(!useReact())return;castSpell("Comando");
   info("Comando al posto dell'attacco di opportunità","Incantatore da Guerra: «Fuggi», «Prono» o «Fermo». TS Saggezza CD 16.");renderAll();save()});
 $("bHarness").addEventListener("click",()=>{harness();renderAll();save()});
 $("bSense").addEventListener("click",()=>{if(S.sense>=6){toast("Percezione del Divino finita: serve un riposo lungo");return}S.sense++;toast("Percezione del Divino: celestiali, immondi e non morti entro 18 m");renderAll();save()});
-$("bDeath").addEventListener("click",()=>info("Tiro salvezza contro la morte","Tira <b>1d20</b>, senza aura: 10 o più è un successo. Con 1 segni due fallimenti, con 20 ti rialzi a 1 PF. Segna l'esito nei rombi qui sotto."));
+$("bDeath").addEventListener("click",()=>info("Tiro salvezza contro la morte","Tira <b>1d20</b>, senza aura: 10 o più è un successo. Con 1 segni due fallimenti, con 20 ti rialzi a 1 PF. Segna l'esito nei rombi."));
 
 /* --- riposi --- */
 $("bHd").addEventListener("click",()=>{if(S.hd>=6)return;S.hd++;toast("Tira 1d10 + 3 e aggiungi il risultato con Cura");renderAll();save()});
@@ -1000,7 +1009,7 @@ document.querySelectorAll(".cast").forEach(b=>b.addEventListener("click",()=>{ca
 
 /* --- tab --- */
 const tabs=[...document.querySelectorAll(".tab")];
-function showTab(id,store){tabs.forEach(t=>{const on=t.getAttribute("aria-controls")===id;t.setAttribute("aria-selected",on);t.tabIndex=on?0:-1;$(t.getAttribute("aria-controls")).hidden=!on});S.tab=id;if(store)save()}
+function showTab(id,store){if(!tabs.some(t=>t.getAttribute("aria-controls")===id))id="combat";tabs.forEach(t=>{const on=t.getAttribute("aria-controls")===id;t.setAttribute("aria-selected",on);t.tabIndex=on?0:-1;$(t.getAttribute("aria-controls")).hidden=!on});S.tab=id;if(store)save()}
 tabs.forEach(t=>t.addEventListener("click",()=>{showTab(t.getAttribute("aria-controls"),true);window.scrollTo({top:0})}));
 
 /* --- avvio --- */
