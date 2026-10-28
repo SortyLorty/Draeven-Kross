@@ -1,5 +1,5 @@
-// Scheda di Draeven offline. A ogni aggiornamento cambia VERSION (es. draeven-v4).
-const VERSION="draeven-v3";
+// Scheda di Draeven offline. A ogni aggiornamento cambia VERSION (es. draeven-v5).
+const VERSION="draeven-v4";
 const FONT_CSS="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap";
 const CORE=["./","./index.html","./manifest.webmanifest","./icons/icon-192.png","./icons/icon-512.png","./icons/icon-maskable-512.png","./icons/apple-touch-icon.png","./icons/favicon.png"];
 self.addEventListener("install",e=>{e.waitUntil((async()=>{const c=await caches.open(VERSION);await c.addAll(CORE);
